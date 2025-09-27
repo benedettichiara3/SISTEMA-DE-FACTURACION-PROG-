@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="card">
+  <div class="card-header">
+    <h3 class="card-title">Nueva Factura</h3>
+  </div>
+  <div class="card-body">
+    <form method="POST">
+      <div class="form-group">
+        <label>Cliente</label>
+        <select name="cliente" class="form-control" required>
+          {% for c in clientes %}
+          <option value="{{ c.id_cliente }}">{{ c.nombre }}</option>
+          {% endfor %}
+        </select>
+      </div>
+      <hr>
+      <h5>Productos</h5>
+      {% for p in productos %}
+      <div class="form-check">
+        <input type="checkbox" name="producto" value="{{ p.id_producto }}" class="form-check-input">
+        <label class="form-check-label">{{ p.descripcion }} - ${{ "%.2f"|format(p.precio) }}</label>
+        <input type="number" name="cantidad" value="1" min="1" class="form-control-sm" style="width:70px; display:inline-block;">
+      </div>
+      {% endfor %}
+      <hr>
+      <button type="submit" class="btn btn-success">Generar Factura</button>
+      <a href="{{ url_for('facturas.lista_facturas') }}" class="btn btn-secondary">Cancelar</a>
+    </form>
+  </div>
+</div>
+{% endblock %}

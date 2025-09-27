@@ -1,0 +1,72 @@
+{% extends "base.html" %}
+{% block content %}
+
+
+<section class="content-header">
+  <div class="container-fluid">
+    <div class="row mb-2">
+      <div class="col-sm-6">
+        <h1>Bienvenido {{ current_user.nombre }}</h1>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<section class="content">
+  <div class="container-fluid">
+    <div class="row">
+
+      
+      <div class="col-lg-3 col-6">
+        <div class="small-box bg-info">
+          <div class="inner">
+            <h3>{{ clientes_count }}</h3>
+            <p>CLIENTES</p>
+          </div>
+          <div class="icon">
+            <i class="fa fa-users"></i>
+          </div>
+          <a href="{{ url_for('clientes.lista_clientes') }}" class="small-box-footer">
+            Ver más <i class="fas fa-arrow-circle-right"></i>
+          </a>
+        </div>
+      </div>
+
+      
+      <div class="col-lg-3 col-6">
+        <div class="small-box bg-success">
+          <div class="inner">
+            <h3>{{ productos_count }}</h3>
+            <p>PRODUCTOS</p>
+          </div>
+          <div class="icon">
+            <i class="fa fa-cubes"></i>
+          </div>
+          <a href="#" class="small-box-footer">
+            Ver más <i class="fas fa-arrow-circle-right"></i>
+          </a>
+        </div>
+      </div>
+
+     
+      <div class="col-lg-3 col-6">
+        <div class="small-box bg-warning">
+          <div class="inner">
+            <h3>{{ facturas_count }}</h3>
+            <p>FACTURAS</p>
+          </div>
+          <div class="icon">
+            <i class="fa fa-file-invoice"></i>
+          </div>
+          <a href="#" class="small-box-footer">
+            Ver más <i class="fas fa-arrow-circle-right"></i>
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+{% endblock %}

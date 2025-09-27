@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="card">
+  <div class="card-header">
+    <h3 class="card-title">Facturas por Cliente</h3>
+  </div>
+  <div class="card-body">
+    <form method="POST">
+      <label>Seleccionar Cliente:</label>
+      <select name="cliente" class="form-control" required>
+        {% for c in clientes %}
+        <option value="{{ c.id_cliente }}">{{ c.nombre }}</option>
+        {% endfor %}
+      </select>
+      <br>
+      <button type="submit" class="btn btn-primary">Consultar</button>
+    </form>
+    <hr>
+    {% if facturas %}
+    <h5>Facturas del cliente seleccionado:</h5>
+    <table class="table table-bordered">
+      <tr>
+        <th>ID</th>
+        <th>Fecha</th>
+        <th>Total</th>
+      </tr>
+      {% for f in facturas %}
+      <tr>
+        <td>{{ f.id_factura }}</td>
+        <td>{{ f.fecha }}</td>
+        <td>${{ "%.2f"|format(f.total) }}</td>
+      </tr>
+      {% endfor %}
+    </table>
+    {% endif %}
+  </div>
+</div>
+{% endblock %}

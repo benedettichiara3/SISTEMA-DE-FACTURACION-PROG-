@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="card">
+  <div class="card-header">
+    <h3 class="card-title">Ventas por Período</h3>
+  </div>
+  <div class="card-body">
+    <form method="POST">
+      <div class="form-group">
+        <label>Fecha Inicio</label>
+        <input type="date" name="fecha_inicio" class="form-control" required>
+      </div>
+      <div class="form-group">
+        <label>Fecha Fin</label>
+        <input type="date" name="fecha_fin" class="form-control" required>
+      </div>
+      <br>
+      <button type="submit" class="btn btn-primary">Consultar</button>
+    </form>
+    <hr>
+    {% if facturas %}
+    <h5>Facturas encontradas:</h5>
+    <table class="table table-bordered">
+      <tr>
+        <th>ID</th>
+        <th>Cliente</th>
+        <th>Fecha</th>
+        <th>Total</th>
+      </tr>
+      {% for f in facturas %}
+      <tr>
+        <td>{{ f.id_factura }}</td>
+        <td>{{ f.cliente.nombre }}</td>
+        <td>{{ f.fecha }}</td>
+        <td>${{ "%.2f"|format(f.total) }}</td>
+      </tr>
+      {% endfor %}
+    </table>
+    <h5>Total del período: ${{ "%.2f"|format(total) }}</h5>
+    {% endif %}
+  </div>
+</div>
+{% endblock %}
