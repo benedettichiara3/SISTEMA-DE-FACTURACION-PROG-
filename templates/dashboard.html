@@ -1,25 +1,22 @@
 {% extends "base.html" %}
 {% block content %}
 
-
 <section class="content-header">
   <div class="container-fluid">
     <div class="row mb-2">
       <div class="col-sm-6">
-        <h1>Bienvenido {{ current_user.nombre }}</h1>
+        <h1 style="color:#d63384;">BIENVENIDO/A {{ current_user.nombre }}</h1>
       </div>
     </div>
   </div>
 </section>
 
-
 <section class="content">
   <div class="container-fluid">
     <div class="row">
 
-      
       <div class="col-lg-3 col-6">
-        <div class="small-box bg-info">
+        <div class="small-box" style="background-color:#f8bbd0; color:#880e4f;">
           <div class="inner">
             <h3>{{ clientes_count }}</h3>
             <p>CLIENTES</p>
@@ -27,15 +24,14 @@
           <div class="icon">
             <i class="fa fa-users"></i>
           </div>
-          <a href="{{ url_for('clientes.lista_clientes') }}" class="small-box-footer">
+          <a href="{{ url_for('clientes.lista_clientes') }}" class="small-box-footer" style="background-color:#f48fb1; color:white;">
             Ver más <i class="fas fa-arrow-circle-right"></i>
           </a>
         </div>
       </div>
 
-      
       <div class="col-lg-3 col-6">
-        <div class="small-box bg-success">
+        <div class="small-box" style="background-color:#f06292; color:white;">
           <div class="inner">
             <h3>{{ productos_count }}</h3>
             <p>PRODUCTOS</p>
@@ -43,15 +39,14 @@
           <div class="icon">
             <i class="fa fa-cubes"></i>
           </div>
-          <a href="#" class="small-box-footer">
+          <a href="{{ url_for('productos.lista_productos') }}" class="small-box-footer" style="background-color:#ec407a; color:white;">
             Ver más <i class="fas fa-arrow-circle-right"></i>
           </a>
         </div>
       </div>
 
-     
       <div class="col-lg-3 col-6">
-        <div class="small-box bg-warning">
+        <div class="small-box" style="background-color:#f48fb1; color:white;">
           <div class="inner">
             <h3>{{ facturas_count }}</h3>
             <p>FACTURAS</p>
@@ -59,7 +54,7 @@
           <div class="icon">
             <i class="fa fa-file-invoice"></i>
           </div>
-          <a href="#" class="small-box-footer">
+          <a href="{{ url_for('facturas.lista_facturas') }}" class="small-box-footer" style="background-color:#f06292; color:white;">
             Ver más <i class="fas fa-arrow-circle-right"></i>
           </a>
         </div>
@@ -70,3 +65,4 @@
 </section>
 
 {% endblock %}
+
