@@ -6,6 +6,7 @@ from models.user import User
 from models.cliente import Cliente
 from models.producto import Producto
 from models.factura import Factura
+from flask_login import logout_user
 
 
 from routes.clientes import clientes_bp
@@ -95,6 +96,13 @@ def dashboard():
         facturas_count=facturas_count
     )
 
+
+@app.route("/logout")
+@login_required
+def logout():
+    logout_user() 
+    flash("Sesión cerrada correctamente")
+    return redirect(url_for("login"))
 
 if __name__ == "__main__":
     with app.app_context():
